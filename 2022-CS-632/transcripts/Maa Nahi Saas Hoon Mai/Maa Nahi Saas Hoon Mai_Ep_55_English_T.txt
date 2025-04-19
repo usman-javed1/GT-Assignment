@@ -1,0 +1,355 @@
+[40.72] Aunt, you?
+[45.00] Even trying to look for you 
+is one hell of a trouble.
+[50.92] Why were you looking for me?
+[54.04] You are right,
+[55.92] why was I attempting to do 
+this useless task?
+[70.48] If you have any work from me, 
+then let me know.
+[73.88] Work,
+[75.60] yes, I do have a work from you.
+[79.84] Yes?
+[82.04] Do one thing,
+[84.20] just disappear somewhere,
+[93.60] get lost in a way that Salman cannot 
+find you even if he wants to.
+[103.96] No Aunt,
+[113.56] I don’t want to get lost anymore.
+[203.12] Look at me,
+[205.72] she is a mother, my child,
+[208.28] you don’t get upset with your Mom,
+[214.36] if there is something, 
+I will come along,
+[217.76] I will talk to your mother and 
+try to make her understand.
+[229.92] My child I know you very well,
+[233.60] you are a very happy and lovely girl
+[244.84] but I have been noticing 
+for a few days
+[249.36] you have gone very dull.
+[254.00] I can feel your pain.
+[270.12] I went for some work.
+[272.76] To the police station to file a report 
+for missing child?
+[278.20] What is your connection with a 
+25-year-old case? Yeah?
+[282.44] I am asking you something, 
+who is that girl?
+[286.00] I haven’t asked a very 
+difficult question
+[291.20] that you are thinking so deeply about.
+[298.24] Why am I hiding it from everyone?
+[305.72] All this is painful for me but...
+[312.88] I don’t understand
+[318.60] why have Mom asked me 
+not to tell anyone?
+[323.72] After all, what will anyone think
+[328.96] about a missing child except feeling 
+sad for them?
+[344.32] My child, I and your mother went 
+to the highway to visit an unwell friend.
+[353.28] On our way back we heard the voice 
+of a crying baby behind the bushes,
+[358.92] we looked around us, 
+but there was no one.
+[364.48] Your Dad moved towards 
+the bushes,
+[368.48] he found you there,
+[374.28] you were crying very badly 
+over there,
+[377.08] my heart exploded seeing you.
+[390.72] Wasai?
+[392.96] Wasai?
+[394.68] yes, yes, yes, Madam Sr?
+[396.76] Where has the daughter of 
+Master Shoaib gone?
+[399.52] Umm.
+[403.24] This is my house, not a hotel
+[406.04] that anyone can come when
+ they want and leave when they want.
+[414.72] Stop, stop, stop, girl?
+[418.00] What has happened to her?
+[419.36] Why didn’t she hear my voice?
+[422.44] Don't worry Madam Sr, 
+I will go see.
+[428.92] This girl is losing her mind 
+day by day.
+[445.16] Stop Madam Jr, 
+stop. Madam Jr?
+[448.56] Madam?
+[451.32] Madam Jr?
+[452.84] Madam Jr?
+[455.28] Madam Jr?
+[457.00] Open the door Madam Jr.
+[461.96] What should I do?
+[463.88] I will call madam.
+[478.32] If Arooj was our own biological 
+daughter,
+[485.00] would we still give her to such 
+a mother-in-law?
+[491.52] We found Arooj,
+[493.48] we accepted her with all our heart,
+[497.16] we didn’t have any daughter 
+of our own.
+[501.44] My child, I kept on roaming around in 
+the neighborhood areas with you in my arms
+[505.88] but no one could recognize you,
+[510.16] I even went to the police station
+[514.92] but there was no report filed 
+of a lost child.
+[546.44] Did you knock the door?
+[547.92] Yes, yes, madam I have knocked 
+multiple times,
+[550.96] Madam Jr didn’t open the door, 
+come quickly.
+[556.16] Come, madam, 
+come quickly Madam.
+[581.84] Madam Jr is not opening the door.
+[585.20] Arooj,
+[586.64] Arooj my child,
+[588.92] Arooj, open the door.
+[591.88] Arooj?
+[593.60] Arooj, open the door, my child.
+[595.96] What is all this going on? Why are you
+guys making so much noise?
+[598.92] Mehreen, Arooj has locked herself 
+in the room.
+[624.32] what has happened, 
+sister-in-law?
+[626.28] What are you saying, Mehreen?
+[628.64] She was so worried.
+[630.92] She was very upset for the 
+past 2 days.
+[632.96] I don’t know how her mental condition
+must be right now.
+[635.48] I don’t know about her 
+mental condition
+[637.48] but Arooj will definitely 
+make us mad,
+[639.84] there is something or 
+the other all the time,
+[641.44] she keeps on doing something, 
+this girl has made me fed up.
+[646.64] This woman is so heartless.
+[649.08] Arooj, my child?
+[651.08] Arooj, my child,
+[653.40] it’s me, open the door.
+[656.92] Wasai, do one thing, 
+keep on knocking
+[659.68] till she opens the door, 
+I will call Salman.
+[664.00] Madam Jr?
+[666.28] Madam Jr?
+[668.48] Open the door, Madam Jr.
+[723.00] Hello?
+[733.44] Yes Aunt,
+[741.20] yes I understand,
+[749.08] don’t worry,
+[754.52] I will talk to her.
+[761.36] If God wills.
+[766.88] Yes.
+[870.92] How can life be lived with precaution
+and by being careful all the time?
+[889.08] Something or the other moves 
+away from its place.
+[898.36] If all the time will be spent doing this
+then when will those moments come
+[912.08] when life will be lived carefree 
+with smiles?
+[958.56] Arooj, my child,
+[959.96] please open the door. Arooj?
+[963.92] Wasai, my heart is sinking.
+[965.72] Madam, don’t worry,
+[968.84] God will make things right.
+[971.60] Farooq, my child, break the door.
+[994.08] Arooj, my child?
+[1013.76] My child, what was this behavior?
+[1019.88] I don’t expect such stupid act 
+from you at all.
+[1029.12] I am sorry, Aunt.
+[1046.48] I couldn’t understand myself 
+what I was doing.
+[1050.92] My love, it is not important 
+what you are doing,
+[1055.60] what’s more important is 
+why are you doing it?
+[1059.92] I didn’t expect this from you, 
+my child,
+[1063.32] what was this weird act?
+[1065.56] If there is a problem or any issue,
+then tell me,
+[1069.56] share it with me,
+[1072.04] I might be able to help you somehow,
+[1075.04] hmm?
+[1087.08] no one can help me.
+[1105.28] My foundation cannot change.
+[1109.48] What are you saying, my child?
+[1114.44] My child, Arooj?
+[1117.84] What do you mean? 
+Don’t say that.
+[1124.84] Don’t you worry,
+[1130.04] I won’t harm myself.
+[1136.40] That is what I expect from you.
+[1152.84] I am here with you.
+[1157.84] My child.
+[1232.72] Greetings, aunt.
+[1234.16] Greetings.
+[1235.80] Thank God, Shanzey that you came,
+[1237.60] now go and talk to your friend,
+[1239.84] ask her why she made 
+this condition of herself.
+[1245.04] What should I ask her?
+[1248.56] I know everything.
+[1251.76] Shanzey, my child,
+[1253.88] what did you start thinking?
+[1255.32] Go and talk to her she will definitely 
+tell you what is it.
+[1259.96] Don’t you worry, I will go and 
+ask her what is the problem.
+[1262.88] Thank you, my child.
+ Go and ask her,
+[1265.48] I can’t see her in this condition, 
+my heart is sinking.
+[1268.56] Okay, relax, I will just go 
+and ask her right now.
+[1282.56] Did you talk to Arooj?
+[1285.56] Did she tell you anything?
+[1289.04] No, she didn’t tell anything
+[1293.20] but I have figured it out myself.
+[1302.52] Figured what?
+[1306.64] That there is definitely some problem
+between the mother and daughter.
+[1313.64] But how can there be a problem?
+[1319.12] They are very attached 
+to each other.
+[1324.04] It is just my idea,
+[1330.56] I have sent Arooj to 
+meet her parents,
+[1334.00] now when she comes back, we will 
+get to know what is the matter.
+[1359.88] Have patience Arooj,
+[1361.80] we are trying to find out,
+[1364.32] and we will definitely find a clue.
+[1368.96] How can I be patient,
+[1373.52] you don’t know Shanzey,
+[1377.84] the pain and hell I am going through.
+[1387.28] Do you know,
+[1390.52] I have started to feel disgusted 
+by myself,
+[1397.48] who am I?
+[1400.88] What is my identity?
+[1406.16] How can someone leave their child?
+[1412.00] How can any parents get separated
+from their child?
+[1415.48] Unless they want to leave her 
+themselves?
+[1426.68] Now I am in pursuit of no one.
+[1436.40] Now I am just in pursuit of 
+my own existence.
+[1446.16] Don’t think like that, Arooj,
+[1448.52] your thoughts will take you 
+to the darkness.
+[1451.96] How can I not think, Shanzey?
+[1455.04] How should I stop myself?
+[1459.64] I have started to feel disgusted 
+with myself, who am I?
+[1464.32] What is my identity?
+[1470.84] Until when will I run from myself?
+[1473.80] Until when?
+[1477.52] Arooj, have faith in God.
+[1479.60] Make yourself strong, 
+everything will be fine.
+[1564.24] I don’t expect such a stupid act 
+from you at all.
+[1569.36] I am sorry, Aunt.
+[1579.40] I couldn’t understand myself 
+what I was doing.
+[1583.72] My love, it is not important 
+what you are doing,
+[1588.20] what’s more important is 
+why are you doing it?
+[1592.60] I didn’t expect this from you, 
+my child,
+[1596.00] what was this weird act?
+[1598.16] If there is a problem or any issue,
+[1600.56] then tell me, share it with me,
+[1604.80] I might be able to help you 
+somehow,
+[1607.72] hmm?
+[1632.40] no one can help me.
+[1638.60] My foundation cannot change.
+[1642.72] What are you saying, my child?
+[1647.88] My child, Arooj?
+[1651.28] What do you mean? 
+Don’t say that.
+[1658.36] Don’t you worry,
+[1663.16] I won’t harm myself.
+[1669.72] That is what I expect from you.
+[1681.20] What does she know?
+[1687.80] How I had grief equals 
+to Mountain on me.
+[1697.80] They think that
+[1704.32] I will cause harm to myself 
+because of something.
+[1715.72] What do I even have to ruin?
+[1725.16] Nothing at all.
+[1736.08] No one can understand my pain.
+[1746.40] I am a leaf that has fallen
+from the branch,
+[1757.04] whose fate is merciless,
+[1766.12] wherever it takes her,
+[1771.76] that weak leaf
+[1776.72] cannot do anything to the wind.
+[1823.28] The drama that Arooj performed today,
+[1826.64] what did she tell you about it?
+[1831.28] I asked her
+[1834.40] but she didn’t give any answer.
+[1841.56] I am tired of asking her but 
+she is not telling anything,
+[1847.68] is there anyone in this house who can 
+ask what has happened to her?
+[1851.12] No one is there to ask 
+anything from her.
+[1867.04] When you couldn’t find out,
+[1869.00] I am not anywhere is her list ever.
+[1871.56] Mom, you cannot leave me alone 
+by saying that.
+[1873.64] I am with you, Salman.
+[1880.56] If you are with Salman then 
+who is with me?
+[1894.08] I am alone then.
+[1896.60] Here,
+[1897.88] her dramas start again,
+[1903.76] so everyone’s attention is on her.
+[1907.44] I don’t want anyone’s attention on me,
+[1911.28] leave me alone,
+I want to stay alone.
+[1916.72] Oh please, stop these filmy dialogues,
+[1920.80] I want to stay alone,
+leave me alone,
+[1923.64] this is your in-laws’ house, 
+not your mother’s house.
+[1931.64] Arooj?
+[1932.96] Arooj?
+[1940.96] This girl has destroyed the peace 
+of this house.
+[1944.72] I don’t know what has happened 
+to Arooj,
+[1947.52] I am unable to understand anything.
+[1979.72] Here,
+[1981.12] her dramas start again,
+[1987.08] so everyone’s attention is on her.
+[1991.92] Oh please, stop these filmy dialogues,
+[1995.92] I want to stay alone,
+leave me alone,
+[1998.76] this is your in-laws’ house, 
+not your mother’s house.
+[2026.32] Is this not my mother’s house?
+[2037.96] But the place where 
+I have come from
+[2047.16] is not my mother’s house either.
+[2057.56] So where is my mother’s house?
+[2072.52] Where is that house,
+[2080.48] where my mother lives?
+[2197.04] Mom?
