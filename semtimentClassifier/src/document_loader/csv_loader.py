@@ -29,3 +29,30 @@ class SubtitleCSVLoader(BaseLoader):
                 print(f"Error processing {csv_file}: {str(e)}")
                 
         return all_data 
+
+class MasterSubtitleLoader:
+    def __init__(self, file_path: str = "processed_subtitles/master_aligned_subtitles.csv"):
+        self.file_path = Path(file_path)
+        
+    def load(self) -> List[Dict]:
+        """Load and filter the master subtitles file."""
+        try:
+            # Read the CSV file
+            df = pd.read_csv(self.file_path)
+            
+            # Filter rows where English Length is >= 5 words
+            df['English_Word_Count'] = df['English Subtitle'].str.split().str.len()
+            df = df[df['English_Word_Count'] >= 5]
+            
+            # Drop the word count column as it's no longer needed
+            df = df.drop('English_Word_Count', axis=1)
+            
+            # Convert DataFrame rows to dictionaries
+            records = df.to_dict('records')
+            
+            print(f"Loaded {len(records)} valid subtitle entries")
+            return records
+            
+        except Exception as e:
+            print(f"Error loading file {self.file_path}: {str(e)}")
+            return [] 
