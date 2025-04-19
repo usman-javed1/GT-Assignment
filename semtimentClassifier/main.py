@@ -2,6 +2,7 @@ import pandas as pd
 from pathlib import Path
 from src.document_loader.csv_loader import MasterSubtitleLoader
 from src.model.sentiment_analyzer import SentimentAnalyzer
+import multiprocessing
 
 def main():
     # Initialize the loader
@@ -17,11 +18,12 @@ def main():
     
     print(f"Loaded {len(data)} valid subtitle entries")
     
-    # Initialize sentiment analyzer with batch size 1 for one-by-one processing
-    analyzer = SentimentAnalyzer(batch_size=1)
+    # Initialize sentiment analyzer with optimal number of threads
+    num_threads = min(multiprocessing.cpu_count(), 8)  # Use up to 8 threads
+    analyzer = SentimentAnalyzer(num_threads=num_threads)
     
-    # Process the data one sentence at a time
-    print("Starting sentiment analysis...")
+    # Process the data using multiple threads
+    print(f"Starting sentiment analysis using {num_threads} threads...")
     analyzer.analyze_batch(data)
 
 if __name__ == "__main__":
