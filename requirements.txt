@@ -1,5 +1,7 @@
 langchain==0.1.0
 langchain-core==0.1.10
+transformers>=4.35.0
+torch>=2.0.0
 pandas>=2.0.0
 pathlib>=1.0.1
 openrouter>=0.3.0
