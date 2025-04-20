@@ -3,7 +3,7 @@ import pandas as pd
 def process_drama_metadata():
     try:
         # Read the Excel file
-        df = pd.read_excel('/home/usman/Desktop/GT Assignment /semtimentClassifier/drama_metadata.xlsx')
+        df = pd.read_excel('/home/usman/Downloads/2022-CS-620/2022C620/usman_drama_metadata.xlsx')
         
         # Remove entries where Hindi Subtitles File Name has values
         # This will keep rows where Hindi Subtitles File Name is empty or NaN
