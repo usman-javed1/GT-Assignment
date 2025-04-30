@@ -58,7 +58,7 @@ def main():
         print(f"Error reading metadata file: {str(e)}")
         return
     
-    base_path = '/home/usman/Downloads/2022-CS-620/2022C620/usman_transcripts'
+    base_path = '/home/usman/Desktop/GT Assignment /2022-CS-632/transcripts'
     output_dir = '/home/usman/Desktop/GT Assignment /semtimentClassifier/processed_subtitles'
     
     # Create output directory if it doesn't exist
