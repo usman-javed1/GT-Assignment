@@ -58,7 +58,7 @@ def main():
         print(f"Error reading metadata file: {str(e)}")
         return
     
-    base_path = '/home/usman/Desktop/GT Assignment /2022-CS-616'
+    base_path = '/home/usman/Desktop/GT Assignment /2022_CS-611/2022_CS-611 NLP/2022_CS-611_transcripts'
     output_dir = '/home/usman/Desktop/GT Assignment /semtimentClassifier/processed_subtitles'
     
     # Create output directory if it doesn't exist
@@ -71,8 +71,8 @@ def main():
     for idx, row in metadata_df.iterrows():
         print(f"\nProcessing drama {idx + 1}/{len(metadata_df)}")
         drama_name = row['Drama Name']
-        urdu_file = "English Subtitles/" + row['Urdu Subtitles with Timestamp file name']
-        english_file = "Urdu Subtitles/" + row['English Subtitles with Timestamp file name']
+        urdu_file = row['Urdu Subtitles with Timestamp File Name']
+        english_file = row['English Subtitles with Timestamp File Name']
         # urdu_file = urdu_file.replace('Ep_', 'Ep')
         # english_file = english_file.replace('Ep_', 'Ep')
         
