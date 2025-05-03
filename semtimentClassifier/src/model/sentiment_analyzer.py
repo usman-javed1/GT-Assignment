@@ -107,7 +107,7 @@ class SentimentAnalyzer:
             }
             
             self._print_analysis_results(
-                item['English Subtitle'],
+                item['English Sentence'],
                 {"label": sentiment['label'], "score": sentiment['score']},
                 item_number
             )
