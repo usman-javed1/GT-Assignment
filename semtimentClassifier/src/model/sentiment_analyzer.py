@@ -10,13 +10,7 @@ import sys
 
 class SentimentAnalyzer:
     def __init__(self, num_threads: int = 4):
-        # Always use CPU for the pipeline
-        self.device = "cpu"
-        self.model = pipeline(
-            "text-classification",
-            model="finiteautomata/bertweet-base-sentiment-analysis",
-            device=-1
-        )
+        self.model = pipeline("text-classification", model="finiteautomata/bertweet-base-sentiment-analysis")
         self.results_file = Path("output/sentiment_analysis_results.csv")
         self.processed_count = 0
         self.num_threads = num_threads
@@ -90,7 +84,7 @@ class SentimentAnalyzer:
     def _process_item(self, item: Dict, item_number: int) -> Dict:
         """Process a single item with all necessary steps."""
         try:
-            sentiment = self._analyze_text(item['English Sentence'])
+            sentiment = self._analyze_text(item['English Subtitle'])
             
             result = {
                 **item,
@@ -100,7 +94,7 @@ class SentimentAnalyzer:
             }
             
             self._print_analysis_results(
-                item['English Sentence'],
+                item['English Subtitle'],
                 {"label": sentiment['label'], "score": sentiment['score']},
                 item_number
             )
