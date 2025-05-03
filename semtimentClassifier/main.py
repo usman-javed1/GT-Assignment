@@ -3,6 +3,7 @@ from pathlib import Path
 from src.document_loader.csv_loader import MasterSubtitleLoader
 from src.model.sentiment_analyzer import SentimentAnalyzer
 import multiprocessing
+import torch
 
 def main():
     # Initialize the loader
@@ -18,9 +19,13 @@ def main():
     
     print(f"Loaded {len(data)} valid subtitle entries")
     
-    # Initialize sentiment analyzer with optimal number of threads
+    # Detect device
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f"Using device: {device}")
+
+    # Initialize sentiment analyzer with optimal number of threads and device
     num_threads = min(multiprocessing.cpu_count(), 8)  # Use up to 8 threads
-    analyzer = SentimentAnalyzer(num_threads=num_threads)
+    analyzer = SentimentAnalyzer(num_threads=num_threads, device=device)
     
     # Process the data using multiple threads
     print(f"Starting sentiment analysis using {num_threads} threads...")
