@@ -38,7 +38,7 @@ class MasterSubtitleLoader:
         """Load and filter the master subtitles file."""
         try:
             # Read the CSV file
-            df = pd.read_excel(self.file_path)
+            df = pd.read_excel("/home/usman/Desktop/GT Assignment /semtimentClassifier/processed_subtitles/New_Drama_Sentiment_Corpus.xlsx")
             
             # Filter rows where English Length is >= 5 words
             df['English_Word_Count'] = df['English_Sentence_text'].str.split().str.len()
