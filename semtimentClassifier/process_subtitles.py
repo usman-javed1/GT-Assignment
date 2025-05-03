@@ -58,7 +58,7 @@ def main():
         print(f"Error reading metadata file: {str(e)}")
         return
     
-    base_path = '/home/usman/Desktop/GT Assignment /2022-CS-632/transcripts'
+    base_path = '/home/usman/Desktop/GT Assignment /2022-CS-616'
     output_dir = '/home/usman/Desktop/GT Assignment /semtimentClassifier/processed_subtitles'
     
     # Create output directory if it doesn't exist
@@ -71,8 +71,10 @@ def main():
     for idx, row in metadata_df.iterrows():
         print(f"\nProcessing drama {idx + 1}/{len(metadata_df)}")
         drama_name = row['Drama Name']
-        urdu_file = row['Urdu Subtitles with Timestamp File Name']
-        english_file = row['English Subtitles with Timestamp File Name']
+        urdu_file = "English Subtitles/" + row['Urdu Subtitles with Timestamp file name']
+        english_file = "Urdu Subtitles/" + row['English Subtitles with Timestamp file name']
+        # urdu_file = urdu_file.replace('Ep_', 'Ep')
+        # english_file = english_file.replace('Ep_', 'Ep')
         
         print(f"Drama: {drama_name}")
         print(f"Urdu file: {urdu_file}")
@@ -120,8 +122,13 @@ def main():
             output_df = pd.DataFrame(subtitle_pairs)
             output_file = os.path.join(output_dir, f'{drama_name}_aligned_subtitles.csv')
             try:
+                if os.path.exists(output_file):
+                    existing_df = pd.read_csv(output_file)
+                    output_df = pd.concat([existing_df, output_df], ignore_index=True)
+                    # Drop duplicates based on Drama Name, Timestamp, Urdu Subtitle, English Subtitle
+                    output_df = output_df.drop_duplicates(subset=['Drama Name', 'Timestamp', 'Urdu Subtitle', 'English Subtitle'])
                 output_df.to_csv(output_file, index=False, encoding='utf-8')
-                print(f"Successfully created {output_file} with {len(subtitle_pairs)} subtitle pairs")
+                print(f"Successfully updated {output_file} with {len(output_df)} subtitle pairs")
             except Exception as e:
                 print(f"Error saving CSV file {output_file}: {str(e)}")
         else:
@@ -132,8 +139,12 @@ def main():
         master_df = pd.DataFrame(all_subtitle_pairs)
         master_file = os.path.join(output_dir, 'master_aligned_subtitles.csv')
         try:
+            if os.path.exists(master_file):
+                existing_master_df = pd.read_csv(master_file)
+                master_df = pd.concat([existing_master_df, master_df], ignore_index=True)
+                master_df = master_df.drop_duplicates(subset=['Drama Name', 'Timestamp', 'Urdu Subtitle', 'English Subtitle'])
             master_df.to_csv(master_file, index=False, encoding='utf-8')
-            print(f"\nSuccessfully created master file {master_file} with {len(all_subtitle_pairs)} total subtitle pairs")
+            print(f"\nSuccessfully updated master file {master_file} with {len(master_df)} total subtitle pairs")
             
             # Print statistics
             drama_stats = master_df.groupby('Drama Name').size()
