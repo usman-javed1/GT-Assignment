@@ -9,20 +9,13 @@ from queue import Queue
 import sys
 
 class SentimentAnalyzer:
-    def __init__(self, num_threads: int = 4, device: str = None):
-        # Determine device
-        if device is None:
-            try:
-                import torch
-                device = "cuda" if torch.cuda.is_available() else "cpu"
-            except ImportError:
-                device = "cpu"
-        self.device = device
-        # Load pipeline with device
+    def __init__(self, num_threads: int = 4):
+        # Always use CPU for the pipeline
+        self.device = "cpu"
         self.model = pipeline(
             "text-classification",
             model="finiteautomata/bertweet-base-sentiment-analysis",
-            device=0 if self.device == "cuda" else -1
+            device=-1
         )
         self.results_file = Path("output/sentiment_analysis_results.csv")
         self.processed_count = 0
