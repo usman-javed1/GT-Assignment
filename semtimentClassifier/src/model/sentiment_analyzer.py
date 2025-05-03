@@ -97,7 +97,7 @@ class SentimentAnalyzer:
     def _process_item(self, item: Dict, item_number: int) -> Dict:
         """Process a single item with all necessary steps."""
         try:
-            sentiment = self._analyze_text(item['English Subtitle'])
+            sentiment = self._analyze_text(item['English Sentence'])
             
             result = {
                 **item,
