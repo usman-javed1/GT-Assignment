@@ -31,18 +31,17 @@ class SubtitleCSVLoader(BaseLoader):
         return all_data 
 
 class MasterSubtitleLoader:
-    def __init__(self, file_path: str = "processed_subtitles/New_Drama_Sentiment_Corpus.xlsx"):
+    def __init__(self, file_path: str = "processed_subtitles/New_Drama_Sentiment_Corpus.csv"):
         self.file_path = Path(file_path)
         
     def load(self) -> List[Dict]:
         """Load and filter the master subtitles file."""
         try:
             # Read the CSV file
-            df = pd.read_excel("New_Drama_Sentiment_Corpus.xlsx")
-
+            df = pd.read_csv(self.file_path)
             
             # Filter rows where English Length is >= 5 words
-            df['English_Word_Count'] = df['English_Sentence_text'].str.split().str.len()
+            df['English_Word_Count'] = df['English Subtitle'].str.split().str.len()
             df = df[df['English_Word_Count'] >= 5]
             
             # Drop the word count column as it's no longer needed
