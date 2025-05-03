@@ -31,7 +31,7 @@ class SubtitleCSVLoader(BaseLoader):
         return all_data 
 
 class MasterSubtitleLoader:
-    def __init__(self, file_path: str = "processed_subtitles/New_Drama_Sentiment_Corpus.csv"):
+    def __init__(self, file_path: str = "processed_subtitles/master_aligned_subtitles.csv"):
         self.file_path = Path(file_path)
         
     def load(self) -> List[Dict]:
