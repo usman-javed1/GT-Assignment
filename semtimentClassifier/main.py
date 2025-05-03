@@ -12,7 +12,7 @@ def main():
     # Load and filter the data
     print("Loading master subtitles file...")
     data = loader.load()
-    print("data", data)
+    # print("data", data)
     
     if not data:
         print("No data loaded. Please check if the New_Drama_Sentiment_Corpus.csv file exists in the processed_subtitles directory.")
