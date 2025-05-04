@@ -10,7 +10,11 @@ import sys
 
 class SentimentAnalyzer:
     def __init__(self, num_threads: int = 4):
-        self.model = pipeline("text-classification", model="finiteautomata/bertweet-base-sentiment-analysis")
+        self.model = pipeline(
+            "text-classification",
+            model="finiteautomata/bertweet-base-sentiment-analysis",
+            device=-1  # Force CPU to avoid CUDA errors
+        )
         self.results_file = Path("output/sentiment_analysis_results.csv")
         self.processed_count = 0
         self.num_threads = num_threads
@@ -29,15 +33,20 @@ class SentimentAnalyzer:
         return label_mapping.get(label, 'neutral')
 
     def _analyze_text(self, text: str) -> Dict:
-        """Analyze a single text using the model."""
+        """Analyze a single text using the model, with input validation."""
         try:
+            # Input validation: skip empty or excessively long strings
+            if not isinstance(text, str) or not text.strip():
+                raise ValueError("Input text is empty or not a string.")
+            if len(text) > 512:
+                raise ValueError("Input text is too long for the model (>{} chars).".format(len(text)))
             result = self.model(text)[0]
             return {
                 "label": self._map_sentiment_label(result['label']),
                 "score": result['score']
             }
         except Exception as e:
-            print(f"Error in text analysis: {str(e)}")
+            print(f"Error in text analysis for input: {repr(text)[:200]}...\n{str(e)}")
             return {
                 "label": "neutral",
                 "score": 0.0
