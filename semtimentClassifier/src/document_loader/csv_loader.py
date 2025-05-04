@@ -40,7 +40,7 @@ class MasterSubtitleLoader:
             # Read the CSV file
             df = pd.read_csv(self.file_path)
             df = df[df.index > 95860]
-            print(dfhead())
+            print(df.head())
             # Filter rows where English Length is >= 5 words
             df['English_Word_Count'] = df['English Sentence'].str.split().str.len()
             df = df[df['English_Word_Count'] >= 3]
