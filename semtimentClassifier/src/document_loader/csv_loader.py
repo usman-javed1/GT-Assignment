@@ -2,6 +2,14 @@ from typing import List, Dict
 from pathlib import Path
 import pandas as pd
 from langchain_community.document_loaders.base import BaseLoader
+import re
+
+def clean_subtitle_text(text):
+    if not isinstance(text, str):
+        return text
+    cleaned = re.sub(r'<.*?>', '', text)
+    cleaned = re.sub(r'\s+', ' ', cleaned).strip()
+    return cleaned
 
 class SubtitleCSVLoader(BaseLoader):
     def __init__(self, directory_path: str):
@@ -16,6 +24,10 @@ class SubtitleCSVLoader(BaseLoader):
         for csv_file in csv_files:
             try:
                 df = pd.read_csv(csv_file)
+                
+                # Clean the English Subtitle column
+                if 'English Subtitle' in df.columns:
+                    df['English Subtitle'] = df['English Subtitle'].apply(clean_subtitle_text)
                 
                 # Filter rows where English Length is >= 5 words
                 df['English_Word_Count'] = df['English Subtitle'].str.split().str.len()
@@ -41,6 +53,9 @@ class MasterSubtitleLoader:
             df = pd.read_csv(self.file_path)
             
             print(df.head())
+            # Clean the English Sentence column
+            if 'English Sentence' in df.columns:
+                df['English Sentence'] = df['English Sentence'].apply(clean_subtitle_text)
             # Filter rows where English Length is >= 5 words
             df['English_Word_Count'] = df['English Sentence'].str.split().str.len()
             df = df[df['English_Word_Count'] >= 3]

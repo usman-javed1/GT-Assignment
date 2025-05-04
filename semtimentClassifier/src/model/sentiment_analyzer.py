@@ -7,14 +7,17 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import threading
 from queue import Queue
 import sys
+from datasets import Dataset
 
 class SentimentAnalyzer:
     def __init__(self, num_threads: int = 4):
         self.model = pipeline(
             "text-classification",
             model="finiteautomata/bertweet-base-sentiment-analysis",
-            device=-1  # Force CPU to avoid CUDA errors
+            device=0  # Switch to GPU
         )
+        if self.model.device.type == 'cuda':
+            print("[WARNING] For best GPU performance, use a HuggingFace Dataset and batch processing.")
         self.results_file = Path("output/sentiment_analysis_results.csv")
         self.processed_count = 0
         self.num_threads = num_threads
@@ -121,34 +124,61 @@ class SentimentAnalyzer:
             self._save_result(null_result)
             return null_result
 
-    def analyze_batch(self, data: List[Dict]) -> None:
-        """Process items using multiple threads."""
+    def _analyze_batch_texts(self, texts: List[str], batch_size: int = 32) -> List[Dict]:
+        """Analyze a batch of texts using the pipeline's batching capabilities."""
+        results = self.model(texts, batch_size=batch_size, truncation=True)
+        # Map BERTweet labels to our format
+        return [
+            {
+                "label": self._map_sentiment_label(res['label']),
+                "score": res['score']
+            }
+            for res in results
+        ]
+
+    def analyze_batch(self, data: List[Dict], batch_size: int = 32) -> None:
+        """Process items in batches using HuggingFace Dataset and pipeline batching for GPU efficiency."""
         total_items = len(data)
-        print(f"\nStarting analysis of {total_items} items using {self.num_threads} threads...")
+        print(f"\nStarting analysis of {total_items} items using GPU batch processing...")
         # Clear or create results file
         self.results_file.parent.mkdir(exist_ok=True)
         if self.results_file.exists():
             self.results_file.unlink()
-        # Start the output printer thread
-        self.output_thread = threading.Thread(target=self._output_printer)
-        self.output_thread.start()
-        # Process items using thread pool
-        with ThreadPoolExecutor(max_workers=self.num_threads) as executor:
-            future_to_item = {
-                executor.submit(self._process_item, item, i + 1): (item, i + 1)
-                for i, item in enumerate(data)
-            }
-            completed = 0
-            def print_progress_bar(completed, total, bar_length=40):
-                percent = completed / total
-                bar = '=' * int(bar_length * percent) + '-' * (bar_length - int(bar_length * percent))
-                print(f'\rProgress: |{bar}| {completed}/{total} ({percent*100:.1f}%)', end='', flush=True)
-            for future in as_completed(future_to_item):
+        # Prepare texts and Dataset
+        texts = [item['English Sentence'] for item in data]
+        dataset = Dataset.from_dict({"text": texts})
+        completed = 0
+        def print_progress_bar(completed, total, bar_length=40):
+            percent = completed / total
+            bar = '=' * int(bar_length * percent) + '-' * (bar_length - int(bar_length * percent))
+            print(f'\rProgress: |{bar}| {completed}/{total} ({percent*100:.1f}%)', end='', flush=True)
+        # Process in batches
+        for start in range(0, total_items, batch_size):
+            end = min(start + batch_size, total_items)
+            batch_texts = dataset['text'][start:end]
+            batch_items = data[start:end]
+            batch_results = self._analyze_batch_texts(batch_texts, batch_size=batch_size)
+            for i, (item, sentiment) in enumerate(zip(batch_items, batch_results)):
+                result = {
+                    **item,
+                    "sentiment_label": sentiment['label'],
+                    "sentiment_score": sentiment['score'],
+                    "processing_status": "success"
+                }
+                # Only print analysis results if sentiment score is zero
+                if sentiment['score'] == 0.0:
+                    self._print_analysis_results(
+                        item['English Sentence'],
+                        {"label": sentiment['label'], "score": sentiment['score']},
+                        start + i + 1
+                    )
+                self._save_result(result)
                 completed += 1
                 print_progress_bar(completed, total_items)
         print()  # Newline after progress bar
         # Signal the output printer thread to stop
         self.print_queue.put(None)
-        self.output_thread.join()
+        if self.output_thread:
+            self.output_thread.join()
         print(f"\nAnalysis complete. Results saved to {self.results_file}")
         print(f"Successfully processed: {self.processed_count}/{total_items} items") 
