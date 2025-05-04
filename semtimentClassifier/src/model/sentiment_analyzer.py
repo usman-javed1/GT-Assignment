@@ -84,7 +84,7 @@ class SentimentAnalyzer:
     def _process_item(self, item: Dict, item_number: int) -> Dict:
         """Process a single item with all necessary steps."""
         try:
-            sentiment = self._analyze_text(item['English Sentence'])
+            sentiment = self._analyze_text(item['English Subtitle'])
             result = {
                 **item,
                 "sentiment_label": sentiment['label'],
@@ -94,7 +94,7 @@ class SentimentAnalyzer:
             # Only print analysis results if sentiment score is zero
             if sentiment['score'] == 0.0:
                 self._print_analysis_results(
-                    item['English Sentence'],
+                    item['English Subtitle'],
                     {"label": sentiment['label'], "score": sentiment['score']},
                     item_number
                 )
