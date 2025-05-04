@@ -52,7 +52,7 @@ class MasterSubtitleLoader:
             # Read the CSV file
             df = pd.read_csv(self.file_path)
             
-            print(df.head())
+            print(df.shape)
             # Clean the English Sentence column
             if 'English Sentence' in df.columns:
                 df['English Sentence'] = df['English Sentence'].apply(clean_subtitle_text)
