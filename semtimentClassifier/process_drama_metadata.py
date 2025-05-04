@@ -3,7 +3,7 @@ import pandas as pd
 def process_drama_metadata():
     try:
         # Read the Excel file
-        df = pd.read_excel('/home/usman/Desktop/GT Assignment /2022C620/usman_drama_metadata.xlsx')
+        df = pd.read_excel('/home/usman/Desktop/GT Assignment /metadata.xlsx')
         
         filtered_df = df[df['Hindi Subtitles File Name'].isna() & (~df['English Subtitles with Timestamp File Name'].isna())]
         

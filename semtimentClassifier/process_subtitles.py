@@ -58,7 +58,7 @@ def main():
         print(f"Error reading metadata file: {str(e)}")
         return
     
-    base_path = '/home/usman/Desktop/GT Assignment /2022C620/usman_transcripts'
+    base_path = '/home/usman/Desktop/GT Assignment /farzan__transcripts'
     output_dir = '/home/usman/Desktop/GT Assignment /semtimentClassifier/processed_subtitles'
     
     # Create output directory if it doesn't exist
@@ -73,12 +73,16 @@ def main():
         drama_name = row['Drama Name']
         urdu_file = row['Urdu Subtitles with Timestamp File Name']
         english_file = row['English Subtitles with Timestamp File Name']
-        # urdu_file = urdu_file.replace('Ep_', 'Ep')
-        # english_file = english_file.replace('Ep_', 'Ep')
+        urdu_file = urdu_file.replace('Ep_', 'Ep')
+        english_file = english_file.replace('Ep_', 'Ep')
         
         print(f"Drama: {drama_name}")
         print(f"Urdu file: {urdu_file}")
         print(f"English file: {english_file}")
+        
+        # Extract episode number and URL from metadata
+        episode_no = row.get('Episode No#', row.get('Episode', ''))
+        url = row.get('Youtube Link', row.get('URL', ''))
         
         # Process both subtitle files
         drama_base_path = os.path.join(base_path, drama_name)
@@ -97,6 +101,7 @@ def main():
         
         # Create a dictionary to match subtitles by timestamp
         subtitle_pairs = []
+        sentence_no = 1
         for urdu_sub in urdu_subtitles:
             # Find matching English subtitle with closest timestamp
             closest_eng = min(english_subtitles, 
@@ -106,16 +111,16 @@ def main():
             if abs(closest_eng['timestamp'] - urdu_sub['timestamp']) <= 1.0:
                 pair = {
                     'Drama Name': drama_name,
-                    'Timestamp': format_timestamp(urdu_sub['timestamp']),
-                    'Urdu Subtitle': urdu_sub['text'],
-                    'Urdu Length': len(urdu_sub['text'].split()),
-                    'English Subtitle': closest_eng['text'],
-                    'English Length': len(closest_eng['text'].split()) if closest_eng['text'] else 0,
-                    'Episode': row.get('Episode', ''),  # Add episode if available in metadata
-                    'Genre': row.get('Genre', '')      # Add genre if available in metadata
+                    'Episode No#': episode_no,
+                    'URL': url,
+                    'Sentence No': sentence_no,
+                    'Timestamps': format_timestamp(urdu_sub['timestamp']),
+                    'Urdu Sentence': urdu_sub['text'],
+                    'English Sentence': closest_eng['text']
                 }
                 subtitle_pairs.append(pair)
                 all_subtitle_pairs.append(pair)  # Add to master list
+                sentence_no += 1
         
         if subtitle_pairs:
             # Create DataFrame and save individual drama CSV
@@ -125,8 +130,8 @@ def main():
                 if os.path.exists(output_file):
                     existing_df = pd.read_csv(output_file)
                     output_df = pd.concat([existing_df, output_df], ignore_index=True)
-                    # Drop duplicates based on Drama Name, Timestamp, Urdu Subtitle, English Subtitle
-                    output_df = output_df.drop_duplicates(subset=['Drama Name', 'Timestamp', 'Urdu Subtitle', 'English Subtitle'])
+                    # Drop duplicates based on Drama Name, Episode No#, URL, Sentence No, Urdu Sentence, English Sentence
+                    output_df = output_df.drop_duplicates(subset=['Drama Name', 'Episode No#', 'URL', 'Sentence No', 'Urdu Sentence', 'English Sentence'])
                 output_df.to_csv(output_file, index=False, encoding='utf-8')
                 print(f"Successfully updated {output_file} with {len(output_df)} subtitle pairs")
             except Exception as e:
@@ -142,7 +147,7 @@ def main():
             if os.path.exists(master_file):
                 existing_master_df = pd.read_csv(master_file)
                 master_df = pd.concat([existing_master_df, master_df], ignore_index=True)
-                master_df = master_df.drop_duplicates(subset=['Drama Name', 'Timestamp', 'Urdu Subtitle', 'English Subtitle'])
+                master_df = master_df.drop_duplicates(subset=['Drama Name', 'Episode No#', 'URL', 'Sentence No', 'Urdu Sentence', 'English Sentence'])
             master_df.to_csv(master_file, index=False, encoding='utf-8')
             print(f"\nSuccessfully updated master file {master_file} with {len(master_df)} total subtitle pairs")
             
