@@ -58,7 +58,7 @@ def main():
         print(f"Error reading metadata file: {str(e)}")
         return
     
-    base_path = '/home/usman/Desktop/GT Assignment /farzan__transcripts'
+    base_path = '/home/usman/Desktop/GT Assignment /2022C620/usman_transcripts'
     output_dir = '/home/usman/Desktop/GT Assignment /semtimentClassifier/processed_subtitles'
     
     # Create output directory if it doesn't exist
@@ -73,15 +73,15 @@ def main():
         drama_name = row['Drama Name']
         urdu_file = row['Urdu Subtitles with Timestamp File Name']
         english_file = row['English Subtitles with Timestamp File Name']
-        urdu_file = urdu_file.replace('Ep_', 'Ep')
-        english_file = english_file.replace('Ep_', 'Ep')
+        # urdu_file = urdu_file.replace('Ep_', 'Ep')
+        # english_file = english_file.replace('Ep_', 'Ep')
         
         print(f"Drama: {drama_name}")
         print(f"Urdu file: {urdu_file}")
         print(f"English file: {english_file}")
         
         # Extract episode number and URL from metadata
-        episode_no = row.get('Episode No#', row.get('Episode', ''))
+        episode_no = row.get('Episode No#', row.get('Episode Number', ''))
         url = row.get('Youtube Link', row.get('URL', ''))
         
         # Process both subtitle files
@@ -102,19 +102,26 @@ def main():
         # Create a dictionary to match subtitles by timestamp
         subtitle_pairs = []
         sentence_no = 1
-        for urdu_sub in urdu_subtitles:
+        for i, urdu_sub in enumerate(urdu_subtitles):
             # Find matching English subtitle with closest timestamp
             closest_eng = min(english_subtitles, 
                             key=lambda x: abs(x['timestamp'] - urdu_sub['timestamp']))
             
             # Only match if timestamps are within 1 second of each other
             if abs(closest_eng['timestamp'] - urdu_sub['timestamp']) <= 1.0:
+                start_time = format_timestamp(urdu_sub['timestamp'])
+                # End time is the next Urdu subtitle's timestamp, or start_time if last
+                if i + 1 < len(urdu_subtitles):
+                    end_time = format_timestamp(urdu_subtitles[i + 1]['timestamp'])
+                else:
+                    end_time = start_time  # or set to '' or start_time + 2 seconds, etc.
                 pair = {
                     'Drama Name': drama_name,
                     'Episode No#': episode_no,
                     'URL': url,
                     'Sentence No': sentence_no,
-                    'Timestamps': format_timestamp(urdu_sub['timestamp']),
+                    'Start Time': start_time,
+                    'End Time': end_time,
                     'Urdu Sentence': urdu_sub['text'],
                     'English Sentence': closest_eng['text']
                 }
