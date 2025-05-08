@@ -58,7 +58,7 @@ def main():
         print(f"Error reading metadata file: {str(e)}")
         return
     
-    base_path = '/home/usman/Desktop/GT Assignment /farzan__transcripts'
+    base_path = '/home/usman/Desktop/GT Assignment /2022_CS-611/2022_CS-611 NLP/2022_CS-611_transcripts'
     output_dir = '/home/usman/Desktop/GT Assignment /semtimentClassifier/processed_subtitles'
     
     # Create output directory if it doesn't exist
@@ -73,8 +73,8 @@ def main():
         drama_name = row['Drama Name']
         urdu_file = row['Urdu Subtitles with Timestamp File Name']
         english_file = row['English Subtitles with Timestamp File Name']
-        urdu_file = urdu_file.replace('Ep_', 'Ep')
-        english_file = english_file.replace('Ep_', 'Ep')
+        # urdu_file = urdu_file.replace('Ep_', 'Ep')
+        # english_file = english_file.replace('Ep_', 'Ep')
         
         print(f"Drama: {drama_name}")
         print(f"Urdu file: {urdu_file}")

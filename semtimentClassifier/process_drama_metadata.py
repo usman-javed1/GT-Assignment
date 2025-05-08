@@ -3,9 +3,9 @@ import pandas as pd
 def process_drama_metadata():
     try:
         # Read the Excel file
-        df = pd.read_excel('/home/usman/Desktop/GT Assignment /metadata.xlsx')
+        df = pd.read_excel('/home/usman/Desktop/GT Assignment /2022_CS-611/2022_CS-611 NLP/2022-CS-611.xlsx')
         
-        filtered_df = df[df['Hindi Subtitles File Name'].isna() & (~df['English Subtitles with Timestamp File Name'].isna())]
+        filtered_df = df[(~df['English Subtitles with Timestamp File Name'].isna())]
         
         output_filename = 'drama_metadata_filtered.xlsx'
         filtered_df.to_excel(output_filename, index=False)
